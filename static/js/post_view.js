@@ -23,6 +23,21 @@ CihuyDomReady(() => {
 				let tableData = "";
 				data.data.items.map((values, index) => {
 					const sequentialNumber = index + 1;
+
+					// Format the date
+					const dateObj = new Date(values.updated);
+					const options = {
+						day: 'numeric',
+						month: 'long', // Use 'short' or 'long' for abbreviated or full month names
+						year: 'numeric',
+					};
+
+					const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
+
+					const timePart = dateObj.toLocaleTimeString('id-ID', {
+						hour12: false
+					});
+
 					tableData += `
                         <tr>
                         <td hidden></td>
@@ -45,7 +60,7 @@ CihuyDomReady(() => {
                             <p class="fw-normal mb-1">${values.replies.totalItems}</p>
                         </td>               
                         <td style="text-align: center; vertical-align: middle">
-                            <p class="fw-normal mb-1">${values.updated}</p>
+                            <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, Pukul ${timePart} WIB</p>
                         </td>               
                     </tr>`;
 				});
