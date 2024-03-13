@@ -12,7 +12,14 @@ CihuyDomReady(() => {
 	const itemperpage = 5;
 	let halamannow = 1;
 
-	fetch(UrlGetAllPost, requestOptionsGet)
+	// Get the prodiID from the URL using URLSearchParams
+	const urlParams = new URLSearchParams(window.location.search);
+	const prodiID = urlParams.get('prodiID');
+
+	// Use prodiID in your fetch request or wherever needed
+	const fetchUrl = UrlGetAllPost + "?prodiID=" + prodiID;
+
+	fetch(fetchUrl, requestOptionsGet)
 		.then((result) => {
 			return result.json();
 		})
@@ -44,9 +51,9 @@ CihuyDomReady(() => {
 						<td style="text-align: center; vertical-align: middle">
                             <p class="fw-normal mb-1">${sequentialNumber}</p>
                         </td>
-                        <td style="text-align: center; vertical-align: middle">
-                            <p class="fw-normal mb-1">${values.id}</p>
-                        </td>               
+						<td style="text-align: center; vertical-align: middle">
+							<p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
+						</td>                           
                         <td style="text-align: center; vertical-align: middle">
                             <p class="fw-normal mb-1">${values.title}</p>
                         </td>               
@@ -59,9 +66,9 @@ CihuyDomReady(() => {
                         <td style="text-align: center; vertical-align: middle">
                             <p class="fw-normal mb-1">${values.replies.totalItems}</p>
                         </td>               
-                        <td style="text-align: center; vertical-align: middle">
-                            <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, Pukul ${timePart} WIB</p>
-                        </td>               
+						<td style="text-align: center; vertical-align: middle">
+                            <p class="fw-normal mb-1">${values.id}</p>
+                        </td> 
                     </tr>`;
 				});
 				document.getElementById("tablebody").innerHTML = tableData;
