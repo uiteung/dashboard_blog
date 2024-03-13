@@ -28,7 +28,7 @@
 		<!-- Sidebar Start -->
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" style="text-align: center;" href="index.html">
+				<a class="sidebar-brand" style="text-align: center;" href="index.html?prodiID=14">
 					<span class="align-middle"><img src="static/img/LOGO ULBI - WIDE BACKGROUNG NEVY (1).png" alt=""
 							style="width: 150px; margin-left: 1px" /></span>
 				</a>
@@ -39,7 +39,7 @@
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
+						<a class="sidebar-link" href="index.html?prodiID=14">
 							<i class="align-middle" data-feather="trending-up"></i> <span class="align-middle">Data
 								Posting Blog</span>
 						</a>
@@ -116,9 +116,15 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h5 class="right-aligned" style="float: right">
-						<a href="index.html">Home</a> / Data Monitoring Dashboard Blogger
+						<a href="index.html?prodiID=14">Home</a> / Data Monitoring Dashboard Blogger
 					</h5>
 					<h1 class="h3 mb-3"><b>Rekap Blogger</b></h1>
+					<select class="form-select" id="prodiDropdown" style="max-width: 300px;">
+						<option value="">Pilih Prodi</option>
+						<option value="13">D3 - Teknik Informatika</option>
+						<option value="14" selected>D4 - Teknik Informatika</option>
+						<!-- Tambahkan opsi sesuai dengan kebutuhan -->
+					</select>
 					<div class="row justify-content-center">
 						<div class="col-12">
 							<div class="card">
@@ -144,12 +150,12 @@
 												<tr style="text-align: center; vertical-align: middle">
 													<th hidden></th>
 													<th>No</th>
-													<th>ID Post</th>
+													<th width="220px">Tanggal Posting</th>
 													<th>Judul Postingan</th>
 													<th>Url Postingan</th>
 													<th>Author</th>
 													<th>Jawaban Postingan</th>
-													<th>Tanggal Posting</th>
+													<th>ID Post</th>
 												</tr>
 											</thead>
 
@@ -201,6 +207,8 @@
 	<script src="static/js/style.js"></script>
 	<script src="static/js/app.js"></script>
 	<script src="static/js/post_view.js" type="module"></script>
+	<script src="static/js//controller/dropdown.js"></script>
+
 </body>
 
 </html>
