@@ -13,7 +13,8 @@ export let requestOptionsGet = {
 }
 
 // Endpoint Get All
-export let UrlGetAllPost = "http://127.0.0.1:8080/api/blog/postprodi";
+export let UrlGetKey = "https://blogger.ulbi.ac.id/api/blog/key";
+export let UrlGetAllPost = "https://blogger.ulbi.ac.id/api/blog/postprodi";
 export let UrlGetAllBuku = "https://simbe-dev.ulbi.ac.id/api/v1/webometrics/buku";
 export let UrlGetAllPublikasi = "https://simbe-dev.ulbi.ac.id/api/v1/webometrics/publikasi";
 export let UrlGetRekapCitasiPublikasiPertahun = "https://simbe-dev.ulbi.ac.id/api/v1/webometrics/publikasi/rekapcitasi";
