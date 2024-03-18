@@ -118,6 +118,9 @@ CihuyDomReady(() => {
 		}
 	});
 
+	// Memuat konten saat halaman dimuat berdasarkan prodiID dari URL
+	document.addEventListener("DOMContentLoaded", async function () {
+		const prodiDropdown = document.getElementById("prodiDropdown");
 
 		// Memuat konten saat halaman dimuat berdasarkan prodiID dari URL
 		const urlParams = new URLSearchParams(window.location.search);
@@ -126,5 +129,13 @@ CihuyDomReady(() => {
 			loadContentByProdiID(prodiID);
 		}
 
-		
+		// Menambahkan event listener untuk menangani perubahan nilai dropdown
+		prodiDropdown.addEventListener("change", async function () {
+			// Dapatkan nilai prodiID yang dipilih
+			const selectedProdiID = prodiDropdown.value;
+
+			// Memuat konten dengan prodiID yang baru dipilih
+			loadContentByProdiID(selectedProdiID);
+		});
+	});
 });
