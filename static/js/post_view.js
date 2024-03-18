@@ -3,7 +3,7 @@ import { CihuyDomReady, CihuyQuerySelector } from "https://c-craftjs.github.io/t
 import { UrlGetAllPost, requestOptionsGet } from "./controller/template.js";
 import { token } from "./controller/cookies.js";
 
-CihuyDomReady(async () => {
+CihuyDomReady(() => {
 	const tablebody = CihuyId("tablebody");
 	const buttonsebelumnya = CihuyId("prevPageBtn");
 	const buttonselanjutnya = CihuyId("nextPageBtn");
@@ -11,77 +11,74 @@ CihuyDomReady(async () => {
 	const itemperpage = 5;
 	let halamannow = 1;
 
-	// Get the prodiID from the URL using URLSearchParams
-	const urlParams = new URLSearchParams(window.location.search);
-	const prodiID = urlParams.get('prodiID');
+	async function fetchDataByProdiID(prodiID) {
+		try {
+			const response = await fetch(UrlGetAllPost + `?prodiID=${prodiID}`, await requestOptionsGet());
+			if (!response.ok) {
+				throw new Error('Gagal mendapatkan semua posting');
+			}
 
-	// Use prodiID in your fetch request or wherever needed
-	const fetchUrl = UrlGetAllPost + "?prodiID=" + prodiID;
-
-	try {
-		const response = await fetch(fetchUrl, await requestOptionsGet());
-
-		if (!response.ok) {
-			throw new Error('Gagal mendapatkan semua posting');
+			const data = await response.json();
+			return data.data.items;
+		} catch (error) {
+			console.error('Terjadi kesalahan:', error);
+			return []; // Mengembalikan array kosong jika terjadi kesalahan
 		}
+	}
 
-		const data = await response.json();
-		console.log(data);
-		// Check if data.data.items is an array before using map
-		if (Array.isArray(data.data.items)) {
-			let tableData = "";
-			data.data.items.map((values, index) => {
-				const sequentialNumber = index + 1;
+	async function loadContentByProdiID(prodiID) {
+		const items = await fetchDataByProdiID(prodiID);
 
-				// Format the date
-				const dateObj = new Date(values.updated);
-				const options = {
-					day: 'numeric',
-					month: 'long', // Use 'short' or 'long' for abbreviated or full month names
-					year: 'numeric',
-				};
+		// Memuat ulang tabel dengan data baru
+		let tableData = "";
+		items.forEach((values, index) => {
+			const sequentialNumber = index + 1;
 
-				const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
+			// Format the date
+			const dateObj = new Date(values.updated);
+			const options = {
+				day: 'numeric',
+				month: 'long', // Use 'short' or 'long' for abbreviated or full month names
+				year: 'numeric',
+			};
 
-				const timePart = dateObj.toLocaleTimeString('id-ID', {
-					hour12: false
-				});
+			const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
 
-				tableData += `
-                    <tr>
-                    <td hidden></td>
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${sequentialNumber}</p>
-                    </td>
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
-                    </td>                           
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.title}</p>
-                    </td>               
-                    <td style="text-align: center; vertical-align: middle">
-                        <a href="${values.url}" target="_blank">${values.url}</a>
-                    </td>                           
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.author.displayName}</p>
-                    </td>               
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.replies.totalItems}</p>
-                    </td>               
-                    <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.id}</p>
-                    </td> 
-                </tr>`;
+			const timePart = dateObj.toLocaleTimeString('id-ID', {
+				hour12: false
 			});
-			document.getElementById("tablebody").innerHTML = tableData;
 
-			displayData(halamannow);
-			updatePagination();
-		} else {
-			console.error('Items is not an array:', data.data.items);
-		}
-	} catch (error) {
-		console.error('Terjadi kesalahan:', error);
+			tableData += `
+                <tr>
+                <td hidden></td>
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${sequentialNumber}</p>
+                </td>
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
+                </td>                           
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${values.title}</p>
+                </td>               
+                <td style="text-align: center; vertical-align: middle">
+                    <a href="${values.url}" target="_blank">${values.url}</a>
+                </td>                           
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${values.author.displayName}</p>
+                </td>               
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${values.replies.totalItems}</p>
+                </td>               
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${values.id}</p>
+                </td> 
+            </tr>`;
+		});
+
+		document.getElementById("tablebody").innerHTML = tableData;
+
+		displayData(halamannow);
+		updatePagination();
 	}
 
 	function displayData(page) {
@@ -120,4 +117,14 @@ CihuyDomReady(async () => {
 			updatePagination();
 		}
 	});
+
+
+		// Memuat konten saat halaman dimuat berdasarkan prodiID dari URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const prodiID = urlParams.get('prodiID');
+		if (prodiID) {
+			loadContentByProdiID(prodiID);
+		}
+
+		
 });
