@@ -49,7 +49,7 @@ CihuyDomReady(async () => {
     const buttonsebelumnya = CihuyId("prevPageBtn");
     const buttonselanjutnya = CihuyId("nextPageBtn");
     const halamansaatini = CihuyId("currentPage");
-    const itemperpage = 5;
+    const itemperpage = 10;
     let halamannow = 1;
 
     async function fetchData() {
