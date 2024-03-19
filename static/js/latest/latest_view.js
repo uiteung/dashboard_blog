@@ -3,6 +3,47 @@ import { CihuyDomReady, CihuyQuerySelector } from "https://c-craftjs.github.io/t
 import { UrlGetLatestPost, requestOptionsGet } from "../controller/template.js";
 import { token } from "../controller/cookies.js";
 
+// Fungsi untuk mengonversi kode prodi menjadi nama prodi
+function mapProdiCodeToName(prodiCode) {
+    switch (prodiCode) {
+        case '14':
+            return 'D4 Teknik Informatika';
+        case '13':
+            return 'D3 Teknik Informatika';
+        case '23':
+            return 'D3 Manajemen Informatika';
+        case '33':
+            return 'D3 Akuntansi';
+        case '34':
+            return 'D4 Akuntansi Keuangan';
+        case '43':
+            return 'D3 Manajemen Pemasaran';
+        case '44':
+            return 'D4 Manajemen Perusahaan';
+        case '53':
+            return 'D3 Administrasi Logistik';
+        case '54':
+            return 'D4 Logistik Bisnis';
+        case '74':
+            return 'D4 Logistik Niaga';
+        case '81':
+            return 'S1 Manajemen Transportasi';
+        case '82':
+            return 'S1 Manajemen Logistik';
+        case '83':
+            return 'S1 Bisnis Digital';
+        case '84':
+            return 'S1 Sains Data';
+        case '85':
+            return 'S1 Manajemen Rekayasa';
+        case '11':
+            return 'S2 Manajemen Logistik';
+        
+        default:
+            return 'Prodi Tidak Diketahui';
+    }
+}
+
 CihuyDomReady(async () => {
     const tablebody = CihuyId("tablebody");
     const buttonsebelumnya = CihuyId("prevPageBtn");
@@ -34,6 +75,9 @@ CihuyDomReady(async () => {
         items.forEach((values, index) => {
             const sequentialNumber = index + 1;
 
+            // Mengonversi kode prodi menjadi nama prodi
+            const prodiName = mapProdiCodeToName(values.blog.prodi);
+
             // Format the date
             const dateObj = new Date(values.updated);
             const options = {
@@ -57,7 +101,7 @@ CihuyDomReady(async () => {
                         <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
                     </td>               
                     <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.blog.prodi}</p>
+                        <p class="fw-normal mb-1">${prodiName}</p>
                     </td>                             
                     <td style="text-align: center; vertical-align: middle">
                         <a href="${values.url}" target="_blank">${values.url}</a>
