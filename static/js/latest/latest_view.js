@@ -60,7 +60,7 @@ CihuyDomReady(async () => {
                         <p class="fw-normal mb-1">${values.blog.prodi}</p>
                     </td>                             
                     <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${values.url}</p>
+                        <a href="${values.url}" target="_blank">${values.url}</a>
                     </td>                             
                     <td style="text-align: center; vertical-align: middle">
                         <p class="fw-normal mb-1">${values.title}</p>
