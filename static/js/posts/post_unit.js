@@ -19,9 +19,17 @@ CihuyDomReady(() => {
             }
 
             const data = await response.json();
+            if (!data.data || !data.data.items) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data untuk Unit ini tidak tersedia.'
+                })
+                throw new Error('Data tidak tersedia atau tidak lengkap');
+            }
             return data.data.items;
         } catch (error) {
-            console.error('Terjadi kesalahan:', error);
+            console.error('Terjadi kesalahan saat memuat data:', error);
             return []; // Mengembalikan array kosong jika terjadi kesalahan
         }
     }
