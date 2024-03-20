@@ -1,6 +1,6 @@
 import { CihuyId } from "https://c-craftjs.github.io/element/element.js";
 import { CihuyDomReady, CihuyQuerySelector } from "https://c-craftjs.github.io/table/table.js";
-import { UrlGetAllPost, requestOptionsGet } from "../controller/template.js";
+import { UrlGetAllPostProdi, requestOptionsGet } from "../controller/template.js";
 import { token } from "../controller/cookies.js";
 
 CihuyDomReady(() => {
@@ -13,7 +13,7 @@ CihuyDomReady(() => {
 
 	async function fetchDataByProdiID(prodiID) {
 		try {
-			const response = await fetch(UrlGetAllPost + `?prodiID=${prodiID}`, await requestOptionsGet());
+			const response = await fetch(UrlGetAllPostProdi + `?prodiID=${prodiID}`, await requestOptionsGet());
 			if (!response.ok) {
 				throw new Error('Gagal mendapatkan semua posting');
 			}
