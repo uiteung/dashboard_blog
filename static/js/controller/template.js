@@ -48,4 +48,5 @@ export async function requestOptionsGet() {
 // Endpoint Get All
 export let UrlGetKey = "https://blogger.ulbi.ac.id/api/blog/key";
 export let UrlGetAllPost = "https://blogger.ulbi.ac.id/api/blog/postprodi";
+export let UrlGetAllPostUnit = "https://blogger.ulbi.ac.id/api/blog/postunit";
 export let UrlGetLatestPost = "https://blogger.ulbi.ac.id/api/blog/latest";
