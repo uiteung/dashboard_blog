@@ -8,36 +8,18 @@ function mapUnitCodeToName(unitCode) {
     switch (unitCode) {
         case '1':
             return 'Direktorat Teknologi Informasi (DTI)';
-        case '13':
-            return 'D3 Teknik Informatika';
-        case '23':
-            return 'D3 Manajemen Informatika';
-        case '33':
-            return 'D3 Akuntansi';
-        case '34':
-            return 'D4 Akuntansi Keuangan';
-        case '43':
-            return 'D3 Manajemen Pemasaran';
-        case '44':
-            return 'D4 Manajemen Perusahaan';
-        case '53':
-            return 'D3 Administrasi Logistik';
-        case '54':
-            return 'D4 Logistik Bisnis';
-        case '74':
-            return 'D4 Logistik Niaga';
-        case '81':
-            return 'S1 Manajemen Transportasi';
-        case '82':
-            return 'S1 Manajemen Logistik';
-        case '83':
-            return 'S1 Bisnis Digital';
-        case '84':
-            return 'S1 Sains Data';
-        case '85':
-            return 'S1 Manajemen Rekayasa';
-        case '11':
-            return 'S2 Manajemen Logistik';
+        case '2':
+            return 'Direktorat RPIKK';
+        case '3':
+            return 'Direktorat PSMS';
+        case '4':
+            return 'Fakultas Logistik, Teknologi dan Bisnis (FLTB)';
+        case '5':
+            return 'Sekolah Vokasi';
+        case '6':
+            return 'Humas';
+        case '7':
+            return 'Lembaga Sertifikasi Profesi (LSP)';
         default:
             return 'Unit Tidak Diketahui';
     }
