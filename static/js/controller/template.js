@@ -50,3 +50,4 @@ export let UrlGetKey = "https://blogger.ulbi.ac.id/api/blog/key";
 export let UrlGetAllPostProdi = "https://blogger.ulbi.ac.id/api/blog/postprodi";
 export let UrlGetAllPostUnit = "https://blogger.ulbi.ac.id/api/blog/postunit";
 export let UrlGetLatestPostProdi = "https://blogger.ulbi.ac.id/api/blog/latestprodi";
+export let UrlGetLatestPostUnit = "https://blogger.ulbi.ac.id/api/blog/latestunit";
