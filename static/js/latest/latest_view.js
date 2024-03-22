@@ -1,6 +1,6 @@
 import { CihuyId } from "https://c-craftjs.github.io/element/element.js";
 import { CihuyDomReady, CihuyQuerySelector } from "https://c-craftjs.github.io/table/table.js";
-import { UrlGetLatestPost, requestOptionsGet } from "../controller/template.js";
+import { UrlGetLatestPostProdi, requestOptionsGet } from "../controller/template.js";
 import { token } from "../controller/cookies.js";
 
 // Fungsi untuk mengonversi kode prodi menjadi nama prodi
@@ -54,7 +54,7 @@ CihuyDomReady(async () => {
 
     async function fetchData() {
         try {
-            const response = await fetch(UrlGetLatestPost, await requestOptionsGet());
+            const response = await fetch(UrlGetLatestPostProdi, await requestOptionsGet());
             if (!response.ok) {
                 throw new Error('Gagal mendapatkan data terbaru');
             }
