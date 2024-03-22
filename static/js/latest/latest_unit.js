@@ -20,6 +20,8 @@ function mapUnitCodeToName(unitCode) {
             return 'Humas';
         case '7':
             return 'Lembaga Sertifikasi Profesi (LSP)';
+        case '8':
+            return 'Universitas Logistik dan Bisnis Internasional (ULBI)';
         default:
             return 'Unit Tidak Diketahui';
     }
