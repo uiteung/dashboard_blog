@@ -1,7 +1,6 @@
 import { CihuyId } from "https://c-craftjs.github.io/element/element.js";
 import { CihuyDomReady, CihuyQuerySelector } from "https://c-craftjs.github.io/table/table.js";
 import { UrlGetAllPostUnit, requestOptionsGet } from "../controller/template.js";
-import { token } from "../controller/cookies.js";
 
 CihuyDomReady(() => {
     const tablebody = CihuyId("tablebody");
