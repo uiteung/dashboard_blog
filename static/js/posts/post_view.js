@@ -35,16 +35,21 @@ CihuyDomReady(() => {
 			const sequentialNumber = index + 1;
 
 			// Format the date
-			const dateObj = new Date(values.updated);
+			const datePublished = new Date(values.published);
+			const dateUpdated = new Date(values.updated);
 			const options = {
 				day: 'numeric',
 				month: 'long', // Use 'short' or 'long' for abbreviated or full month names
 				year: 'numeric',
 			};
 
-			const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
+			const formattedDatePublished = new Intl.DateTimeFormat('id-ID', options).format(datePublished);
+			const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateUpdated);
 
-			const timePart = dateObj.toLocaleTimeString('id-ID', {
+			const timePartPublished = datePublished.toLocaleTimeString('id-ID', {
+				hour12: false
+			});
+			const timePartUpdated = dateUpdated.toLocaleTimeString('id-ID', {
 				hour12: false
 			});
 
@@ -55,8 +60,11 @@ CihuyDomReady(() => {
                     <p class="fw-normal mb-1">${sequentialNumber}</p>
                 </td>
                 <td style="text-align: center; vertical-align: middle">
-                    <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
+                    <p class="fw-normal mb-1">${formattedDatePublished.replace('.', ',')}, <br>Pukul ${timePartPublished} WIB</p>
                 </td>                           
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${formattedDateUpdated.replace('.', ',')}, <br>Pukul ${timePartUpdated} WIB</p>
+                </td>                                                    
                 <td style="text-align: center; vertical-align: middle">
                     <p class="fw-normal mb-1">${values.title}</p>
                 </td>               
