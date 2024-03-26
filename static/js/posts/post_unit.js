@@ -73,12 +73,6 @@ CihuyDomReady(() => {
                 <td style="text-align: center; vertical-align: middle">
                     <p class="fw-normal mb-1">${values.author.displayName}</p>
                 </td>               
-                <td style="text-align: center; vertical-align: middle">
-                    <p class="fw-normal mb-1">${values.replies.totalItems}</p>
-                </td>               
-                <td style="text-align: center; vertical-align: middle">
-                    <p class="fw-normal mb-1">${values.id}</p>
-                </td> 
             </tr>`;
         });
 
