@@ -42,18 +42,23 @@ CihuyDomReady(() => {
             const sequentialNumber = index + 1;
 
             // Format the date
-            const dateUpdated = new Date(values.updated);
-            const options = {
-                day: 'numeric',
-                month: 'long', // Use 'short' or 'long' for abbreviated or full month names
-                year: 'numeric',
-            };
+			const datePublished = new Date(values.published);
+			const dateUpdated = new Date(values.updated);
+			const options = {
+				day: 'numeric',
+				month: 'long', // Use 'short' or 'long' for abbreviated or full month names
+				year: 'numeric',
+			};
 
-            const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateUpdated);
+			const formattedDatePublished = new Intl.DateTimeFormat('id-ID', options).format(datePublished);
+			const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateUpdated);
 
-            const timePartUpdated = dateUpdated.toLocaleTimeString('id-ID', {
-                hour12: false
-            });
+			const timePartPublished = datePublished.toLocaleTimeString('id-ID', {
+				hour12: false
+			});
+			const timePartUpdated = dateUpdated.toLocaleTimeString('id-ID', {
+				hour12: false
+			});
 
             tableData += `
                 <tr>
@@ -61,6 +66,9 @@ CihuyDomReady(() => {
                 <td style="text-align: center; vertical-align: middle">
                     <p class="fw-normal mb-1">${sequentialNumber}</p>
                 </td>
+                <td style="text-align: center; vertical-align: middle">
+                    <p class="fw-normal mb-1">${formattedDatePublished.replace('.', ',')}, <br>Pukul ${timePartPublished} WIB</p>
+                </td>                           
                 <td style="text-align: center; vertical-align: middle">
                     <p class="fw-normal mb-1">${formattedDateUpdated.replace('.', ',')}, <br>Pukul ${timePartUpdated} WIB</p>
                 </td>                           
