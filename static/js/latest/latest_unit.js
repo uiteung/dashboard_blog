@@ -91,7 +91,10 @@ CihuyDomReady(async () => {
                     </td>                             
                     <td style="text-align: center; vertical-align: middle">
                         <p class="fw-normal mb-1">${values.title}</p>
-                    </td>                                                       
+                    </td>   
+                    <td style="text-align: center; vertical-align: middle">
+                        <p class="fw-normal mb-1">${values.author.displayName}</p>
+                    </td>                                                    
                 </tr>`;
         });
 
