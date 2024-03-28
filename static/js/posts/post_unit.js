@@ -79,7 +79,7 @@ CihuyDomReady(() => {
                     <a href="${values.url}" target="_blank">${values.url}</a>
                 </td>                           
                 <td style="text-align: center; vertical-align: middle">
-                    <p class="fw-normal mb-1">${values.author.displayName}</p>
+                    <a href="${values.author.displayName}" target="_blank">${values.author.displayName}</a>
                 </td>               
             </tr>`;
         });
