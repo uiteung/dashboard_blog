@@ -79,16 +79,21 @@ CihuyDomReady(async () => {
             const prodiName = mapProdiCodeToName(values.blog.prodi);
 
             // Format the date
-            const dateObj = new Date(values.updated);
+            const dateObjPublished = new Date(values.published);
+            const dateObjUpdated = new Date(values.updated);
             const options = {
                 day: 'numeric',
                 month: 'long', // Use 'short' or 'long' for abbreviated or full month names
                 year: 'numeric',
             };
 
-            const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
+            const formattedDatePublished = new Intl.DateTimeFormat('id-ID', options).format(dateObjPublished);
+            const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateObjUpdated);
 
-            const timePart = dateObj.toLocaleTimeString('id-ID', {
+            const timePartPublished = dateObjPublished.toLocaleTimeString('id-ID', {
+                hour12: false
+            });
+            const timePartUpdated = dateObjPublished.toLocaleTimeString('id-ID', {
                 hour12: false
             });
             tableData += `
@@ -98,8 +103,8 @@ CihuyDomReady(async () => {
                         <p class="fw-normal mb-1">${sequentialNumber}</p>
                     </td>
                     <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
-                    </td>               
+                        <p class="fw-normal mb-1">${formattedDatePublished.replace('.', ',')}, <br>Pukul ${timePartPublished} WIB</p>
+                    </td>                             
                     <td style="text-align: center; vertical-align: middle">
                         <p class="fw-normal mb-1">${prodiName}</p>
                     </td>                             
