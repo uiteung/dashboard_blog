@@ -70,8 +70,12 @@ CihuyDomReady(async () => {
                 year: 'numeric',
             };
 
+            const formattedDatePublished = new Intl.DateTimeFormat('id-ID', options).format(dateObjPublished);
             const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateObjUpdated);
 
+            const timePartPublished = dateObjPublished.toLocaleTimeString('id-ID', {
+                hour12: false
+            });
             const timePartUpdated = dateObjUpdated.toLocaleTimeString('id-ID', {
                 hour12: false
             });
