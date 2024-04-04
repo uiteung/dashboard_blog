@@ -86,8 +86,11 @@ CihuyDomReady(async () => {
                         <p class="fw-normal mb-1">${sequentialNumber}</p>
                     </td>
                     <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${formattedDateUpdated.replace('.', ',')}, <br>Pukul ${timePartUpdated} WIB</p>
+                        <p class="fw-normal mb-1">${formattedDatePublished.replace('.', ',')}, <br>Pukul ${timePartPublished} WIB</p>
                     </td>               
+                    <td style="text-align: center; vertical-align: middle">
+                        <p class="fw-normal mb-1">${formattedDateUpdated.replace('.', ',')}, <br>Pukul ${timePartUpdated} WIB</p>
+                    </td>              
                     <td style="text-align: center; vertical-align: middle">
                         <p class="fw-normal mb-1">${unitName}</p>
                     </td>                             
