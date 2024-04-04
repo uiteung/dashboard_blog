@@ -62,6 +62,7 @@ CihuyDomReady(async () => {
             const unitName = mapUnitCodeToName(values.blog.unit);
 
             // Format the date
+            const dateObjPublished = new Date(values.published);
             const dateObjUpdated = new Date(values.updated);
             const options = {
                 day: 'numeric',
