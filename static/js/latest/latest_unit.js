@@ -62,16 +62,16 @@ CihuyDomReady(async () => {
             const unitName = mapUnitCodeToName(values.blog.unit);
 
             // Format the date
-            const dateObj = new Date(values.updated);
+            const dateObjUpdated = new Date(values.updated);
             const options = {
                 day: 'numeric',
                 month: 'long', // Use 'short' or 'long' for abbreviated or full month names
                 year: 'numeric',
             };
 
-            const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateObj);
+            const formattedDateUpdated = new Intl.DateTimeFormat('id-ID', options).format(dateObjUpdated);
 
-            const timePart = dateObj.toLocaleTimeString('id-ID', {
+            const timePartUpdated = dateObjUpdated.toLocaleTimeString('id-ID', {
                 hour12: false
             });
             tableData += `
@@ -81,7 +81,7 @@ CihuyDomReady(async () => {
                         <p class="fw-normal mb-1">${sequentialNumber}</p>
                     </td>
                     <td style="text-align: center; vertical-align: middle">
-                        <p class="fw-normal mb-1">${formattedDate.replace('.', ',')}, <br>Pukul ${timePart} WIB</p>
+                        <p class="fw-normal mb-1">${formattedDateUpdated.replace('.', ',')}, <br>Pukul ${timePartUpdated} WIB</p>
                     </td>               
                     <td style="text-align: center; vertical-align: middle">
                         <p class="fw-normal mb-1">${unitName}</p>
